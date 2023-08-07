@@ -19,3 +19,18 @@ class BaseModel:
         Saves the model at the current date
         """
         self.updated_at = date.now()
+
+    def to_dict(self):
+        """
+        Returns a dictionary of model attributes
+
+        Returns:
+            dict: a dictionary of model attributes
+        """
+        dictionary = self.__dict__
+        dictionary.update({
+            '__class__': self.__class__.__name__,
+            'created_at': self.updated_at.isoformat(),
+            'updated_at': self.updated_at.isoformat(),
+        })
+        return dictionary
