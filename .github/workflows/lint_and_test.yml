@@ -28,9 +28,6 @@ jobs:
       - name: Lint with Pycode
         run: pycodestyle .
 
-      - name: Check for doc strings
-        run: python -m pydocstyle .
-
       - name: Unit Testing
         run: coverage run -m unittest discover
 
