@@ -16,6 +16,8 @@ class BaseModel:
         self.updated_at = date.now()
         if kwargs:
             kwargs.pop("__class__")
+            if kwargs.get("__class__"):
+                          kwargs.pop("__class__")
             for k, v in kwargs.items():
                 if k == 'created_at' or k == 'updated_at':
                     setattr(self, k, date.fromisoformat(v))
