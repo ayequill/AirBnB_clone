@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This module ensure persistent object storage"""
 from json import dump, loads
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -31,3 +32,14 @@ class FileStorage:
         
         with open(self.__file_path, "w") as file:
             dump(obj_to_file, file)
+
+    def reload(self):
+        """ Deserializes a file and converts it into instances"""
+        try:
+            with open(self.__file_path, "r") as file:
+                output = file.read()
+                if output is not None or "":
+                    json_str = loads(output)
+                    FileStorage.__objects = {key: BaseModel(**json_str[key]) for key in json_str}
+        except FileNotFoundError:
+            pass
