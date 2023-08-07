@@ -13,3 +13,9 @@ class BaseModel:
         self.id = str(uuid4())
         self.created_at = date.now()
         self.updated_at = date.now()
+
+    def save(self):
+        """
+        Saves the model at the current date
+        """
+        self.updated_at = date.now()
