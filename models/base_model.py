@@ -43,6 +43,13 @@ class BaseModel:
         return dictionary
 
     def __str__(self):
+        """
+        Returns a string representation of
+        object
+
+        Returns:
+            str: string representation of object
+        """
         return "[{}] ({}) {}>".format(
             self.__class__.__name__,
             self.id, self.__dict__)
