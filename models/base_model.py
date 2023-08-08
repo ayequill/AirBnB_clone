@@ -2,6 +2,7 @@
 """Module containing BaseModel Class"""
 from uuid import uuid4
 from datetime import datetime as date
+import models
 
 
 class BaseModel:
@@ -15,17 +16,22 @@ class BaseModel:
         self.updated_at = date.now()
         if kwargs:
             kwargs.pop("__class__")
+            if kwargs.get("__class__"):
+                kwargs.pop("__class__")
             for k, v in kwargs.items():
                 if k == 'created_at' or k == 'updated_at':
                     setattr(self, k, date.fromisoformat(v))
                     continue
                 setattr(self, k, v)
+        else:
+            models.storage.new(self)
 
     def save(self):
         """
         Saves the model at the current date
         """
         self.updated_at = date.now()
+        models.storage.save()
 
     def to_dict(self):
         """
