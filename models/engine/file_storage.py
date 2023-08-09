@@ -2,6 +2,7 @@
 """This module ensure persistent object storage"""
 from json import dump, load
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -36,11 +37,17 @@ class FileStorage:
 
     def reload(self):
         """ Deserializes a file and converts it into instances"""
+        classes = {
+            'BaseModel': BaseModel,
+            'User': User
+        }
+
         try:
             temp = {}
             with open(FileStorage.__file_path, 'r') as f:
                 temp = load(f)
                 for key, val in temp.items():
-                    FileStorage.__objects[key] = BaseModel(**val)
+                    cls_name = classes[val['__class__']]
+                    FileStorage.__objects[key] = cls_name(**val)
         except IOError:
             pass
