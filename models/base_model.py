@@ -11,9 +11,6 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """Constructor for Base Model"""
-        self.id = str(uuid4())
-        self.created_at = date.now()
-        self.updated_at = date.now()
         if kwargs:
             kwargs.pop("__class__")
             if kwargs.get("__class__"):
@@ -23,7 +20,12 @@ class BaseModel:
                     setattr(self, k, date.fromisoformat(v))
                     continue
                 setattr(self, k, v)
+            self.save()
         else:
+            self.id = str(uuid4())
+            self.created_at = date.now()
+            self.updated_at = date.now()
+            self.save()
             models.storage.new(self)
 
     def save(self):
@@ -40,7 +42,8 @@ class BaseModel:
         Returns:
             dict: a dictionary of model attributes
         """
-        dictionary = self.__dict__
+        dictionary = {}
+        dictionary.update(self.__dict__)
         dictionary.update({
             '__class__': self.__class__.__name__,
             'created_at': self.updated_at.isoformat(),
@@ -56,6 +59,6 @@ class BaseModel:
         Returns:
             str: string representation of object
         """
-        return "[{}] ({}) {}>".format(
+        return "[{}] ({}) {}".format(
             self.__class__.__name__,
             self.id, self.__dict__)
