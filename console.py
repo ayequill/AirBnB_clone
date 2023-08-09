@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 """ This module contains HBNB CLI Interpreter """
 from cmd import Cmd
-from models.base_model import BaseModel as Base
+from models.base_model import BaseModel
+from models.user import User
 import models
 
 classes = {
-    'BaseModel': 'BaseModel'
+    'BaseModel': BaseModel,
+    'User': User,
 }
 
 
@@ -22,13 +24,17 @@ class HBNBCommand(Cmd):
         if not line:
             print("** class name missing **")
             return
-        elif line != "BaseModel":
+        elif line not in classes:
             print("** class doesn't exist **")
             return
         else:
-            new_instance = Base()
-            new_instance.save()
-            print(new_instance.id)
+            try:
+                new_instance = classes[line]()
+                new_instance.save()
+                print(new_instance.id)
+            except KeyError:
+                pass
+
     # TODO Refactor conditions
 
     def do_show(self, line):
@@ -75,7 +81,8 @@ class HBNBCommand(Cmd):
             del HBNBCommand.__storage.all()[key]
             HBNBCommand.__storage.save()
         except KeyError:
-            print("** no instance found **")
+            if instance_name in classes and instance_id:
+                print("** no instance found **")
 
     def do_all(self, args):
         """ Prints all string representation of all instances
