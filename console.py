@@ -21,6 +21,10 @@ classes = {
     'State': State,
 }
 
+commands = [
+    'all'
+]
+
 
 class HBNBCommand(Cmd):
     """
@@ -28,6 +32,23 @@ class HBNBCommand(Cmd):
     """
     prompt = "(hbnb) "
     __storage = models.storage
+
+    def precmd(self, line):
+        """ Predefine command line """
+        if not any(char in line for char in ['.', '(', ')']):
+            return line
+        else:
+            try:
+                cls_name, *args = line.split('.')
+                if cls_name in classes:
+                    if len(args) == 1:
+                        line = f"{commands[commands.index(args[0])]} {cls_name}"
+            except Exception:
+                pass
+            else:
+                return line
+            finally:
+                return line
 
     # Instance Commands
 
