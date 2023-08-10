@@ -42,7 +42,8 @@ class HBNBCommand(Cmd):
                 cls_name, *args = line.split('.')
                 if cls_name in classes:
                     if len(args) == 1:
-                        line = f"{commands[commands.index(args[0])]} {cls_name}"
+                        command = commands[commands.index(args[0])]
+                        line = f"{command} {cls_name}"
             except Exception:
                 pass
             else:
