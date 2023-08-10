@@ -42,8 +42,11 @@ class HBNBCommand(Cmd):
                 cls_name, *args = line.split('.')
                 if cls_name in classes:
                     if len(args) == 1:
-                        command = commands[commands.index(args[0])]
-                        line = f"{command} {cls_name}"
+                        __cmd = "".join(
+                            list(filter(lambda i: i not in ['(', ')'],
+                                        list(args[0]))))
+                        # command = commands[commands.index(args[0])]
+                        line = f"{__cmd} {cls_name}"
             except Exception:
                 pass
             else:
