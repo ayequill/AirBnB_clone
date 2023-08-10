@@ -180,6 +180,14 @@ class HBNBCommand(Cmd):
         setattr(instance, attribute_name, attribute_value)
         instance.save()
 
+    def do_count(self, args):
+        """ Counts the number of instances based on class """
+        count: int = 0
+        for key in HBNBCommand.__storage.all().keys():
+            if args == key.split(".")[0]:
+                count += 1
+        print(count)
+
     # Main Commands
 
     def do_quit(self, line):
