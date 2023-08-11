@@ -24,6 +24,7 @@ classes = {
 commands = [
     'all',
     'show',
+    'destroy'
 ]
 
 
