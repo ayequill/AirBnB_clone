@@ -16,10 +16,12 @@ class TestState(test_base_model.BaseModelTestCases):
         """ Test State name """
         self.state.name = 'Snake land'
         self.assertIsInstance(self.state.name, str)
-
+    
     def test_state_to_dict(self):
         """ Test State to dict """
-        self.assertTrue(self.state.name in self.state.to_dict().values())
+        self.state.name = 'Snake land'
+        state_obj = self.state.to_dict()
+        self.assertTrue(self.state.name in state_obj.values())
 
     # def test_state_name_with_number(self):
     #     """ Test State name with number """
