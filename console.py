@@ -22,7 +22,8 @@ classes = {
 }
 
 commands = [
-    'all'
+    'all',
+    'show',
 ]
 
 
@@ -42,11 +43,18 @@ class HBNBCommand(Cmd):
                 cls_name, *args = line.split('.')
                 if cls_name in classes:
                     if len(args) == 1:
-                        __cmd = "".join(
-                            list(filter(lambda i: i not in ['(', ')'],
-                                        list(args[0]))))
-                        # command = commands[commands.index(args[0])]
-                        line = f"{__cmd} {cls_name}"
+                        cmd_with_arg = args[0].partition('(')[-1]
+                        __cmd = args[0].partition('(')[0]
+                        if len(cmd_with_arg) > 1:
+                            command = commands[commands.index(__cmd)]
+                            __cls_id = cmd_with_arg.partition(')')[0]
+                            line = f"{command} {cls_name} {__cls_id}"
+                        else:
+                            # __cmd = "".join(
+                            #     list(filter(lambda i: i not in ['(', ')'],
+                            #                 list(args[0]))))
+                            # command = commands[commands.index(args[0])]
+                            line = f"{__cmd} {cls_name}"
             except Exception:
                 pass
             else:
