@@ -16,7 +16,7 @@ class TestState(test_base_model.BaseModelTestCases):
         """ Test State name """
         self.state.name = 'Snake land'
         self.assertIsInstance(self.state.name, str)
-    
+
     def test_state_to_dict(self):
         """ Test State to dict """
         self.state.name = 'Snake land'
