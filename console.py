@@ -148,12 +148,12 @@ class HBNBCommand(Cmd):
         if len(args) < 4:
             print("** value missing **")
             return
-
-        attribute_name = args[2]
-        attribute_value = args[3]
-        instance = all_objs[key]
-        setattr(instance, attribute_name, attribute_value)
-        instance.save()
+        if len(args) == 4:
+            attribute_name = args[2]
+            attribute_value = args[3]
+            instance = all_objs[key]
+            setattr(instance, attribute_name, attribute_value)
+            instance.save()
 
     # Main Commands
 
