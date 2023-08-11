@@ -1,13 +1,6 @@
 #!/usr/bin/python3
 """ This module contains HBNB CLI Interpreter """
 from cmd import Cmd
-from models.base_model import BaseModel
-from models.user import User
-from models.amenity import Amenity
-from models.city import City
-from models.place import Place
-from models.review import Review
-from models.state import State
 from console_misc import classes, commands, attribute_types
 import models
 
