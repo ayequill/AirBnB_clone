@@ -42,20 +42,19 @@ class HBNBCommand(Cmd):
         else:
             try:
                 cls_name, *args = line.split('.')
-                if cls_name in classes:
-                    if len(args) == 1:
-                        cmd_with_arg = args[0].partition('(')[-1]
-                        __cmd = args[0].partition('(')[0]
-                        if len(cmd_with_arg) > 1:
-                            command = commands[commands.index(__cmd)]
-                            __cls_id = cmd_with_arg.partition(')')[0]
-                            line = f"{command} {cls_name} {__cls_id}"
-                        else:
-                            # __cmd = "".join(
-                            #     list(filter(lambda i: i not in ['(', ')'],
-                            #                 list(args[0]))))
-                            # command = commands[commands.index(args[0])]
-                            line = f"{__cmd} {cls_name}"
+                if cls_name in classes and len(args) == 1:
+                    cmd_with_arg = args[0].partition('(')[-1]
+                    __cmd = args[0].partition('(')[0]
+                    if len(cmd_with_arg) > 1:
+                        command = commands[commands.index(__cmd)]
+                        __cls_id = cmd_with_arg.partition(')')[0]
+                        line = f"{command} {cls_name} {__cls_id}"
+                    else:
+                        # __cmd = "".join(
+                        #     list(filter(lambda i: i not in ['(', ')'],
+                        #                 list(args[0]))))
+                        # command = commands[commands.index(args[0])]
+                        line = f"{__cmd} {cls_name}"
             except Exception:
                 pass
             else:
@@ -192,18 +191,18 @@ class HBNBCommand(Cmd):
     def do_count(self, args):
         """ Counts the number of instances based on class """
         count: int = 0
-        for key in HBNBCommand.__storage.all().keys():
+        for key in HBNBCommand.__storage.all():
             if args == key.split(".")[0]:
                 count += 1
         print(count)
 
     # Main Commands
 
-    def do_quit(self, line):
+    def do_quit(self, _):
         """ Exits the console """
         return True
 
-    def do_EOF(self, line):
+    def do_EOF(self, _):
         """ End of line marker """
         print()
         return True

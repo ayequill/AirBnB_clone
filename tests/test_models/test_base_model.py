@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Test Cases for BaseModel """
 from os import remove
-from json import dump, load
+from json import load
 from datetime import datetime as date
 from unittest import TestCase
 from models.base_model import BaseModel

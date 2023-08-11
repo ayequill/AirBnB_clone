@@ -7,7 +7,6 @@ import models
 
 class BaseModel:
     """Class for the BaseModel"""
-    __current_date = date.now()
 
     def __init__(self, *args, **kwargs):
         """Constructor for Base Model"""
