@@ -8,24 +8,8 @@ from models.city import City
 from models.place import Place
 from models.review import Review
 from models.state import State
+from console_misc import classes, commands, attribute_types
 import models
-
-
-classes = {
-    'BaseModel': BaseModel,
-    'User': User,
-    'Place': Place,
-    'City': City,
-    'Amenity': Amenity,
-    'Review': Review,
-    'State': State,
-}
-
-commands = [
-    'all',
-    'show',
-    'destroy'
-]
 
 
 class HBNBCommand(Cmd):
@@ -50,10 +34,6 @@ class HBNBCommand(Cmd):
                         __cls_id = cmd_with_arg.partition(')')[0]
                         line = f"{command} {cls_name} {__cls_id}"
                     else:
-                        # __cmd = "".join(
-                        #     list(filter(lambda i: i not in ['(', ')'],
-                        #                 list(args[0]))))
-                        # command = commands[commands.index(args[0])]
                         line = f"{__cmd} {cls_name}"
             except Exception:
                 pass
@@ -184,6 +164,9 @@ class HBNBCommand(Cmd):
         if len(args) == 4:
             attribute_name = args[2]
             attribute_value = args[3]
+            if attribute_name in attribute_types:
+                attribute_value = attribute_types[attribute_name](
+                    attribute_value)
             instance = all_objs[key]
             setattr(instance, attribute_name, attribute_value)
             instance.save()

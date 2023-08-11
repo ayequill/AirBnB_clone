@@ -8,6 +8,7 @@ from models.city import City
 from models.place import Place
 from models.review import Review
 from models.state import State
+from console_misc import classes
 
 
 class FileStorage:
@@ -42,15 +43,15 @@ class FileStorage:
 
     def reload(self):
         """ Deserializes a file and converts it into instances"""
-        classes = {
-            'BaseModel': BaseModel,
-            'User': User,
-            'Place': Place,
-            'City': City,
-            'Amenity': Amenity,
-            'Review': Review,
-            'State': State,
-        }
+        # classes = {
+        #     'BaseModel': BaseModel,
+        #     'User': User,
+        #     'Place': Place,
+        #     'City': City,
+        #     'Amenity': Amenity,
+        #     'Review': Review,
+        #     'State': State,
+        # }
 
         try:
             temp = {}
