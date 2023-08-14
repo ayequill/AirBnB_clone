@@ -5,9 +5,11 @@ from typing import List
 
 
 class Place(BaseModel):
+    """ This class represents Place """
     city_id: str = ""
     user_id: str = ""
     name: str = ""
+    description: str = ""
     number_rooms: int = 0
     number_bathrooms: int = 0
     max_guest: int = 0
