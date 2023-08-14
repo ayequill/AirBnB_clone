@@ -2,6 +2,7 @@
 """ This module contains HBNB CLI Interpreter """
 from cmd import Cmd
 from console_misc import classes, commands, attribute_types
+from sys import stdin
 import models
 
 
@@ -9,7 +10,8 @@ class HBNBCommand(Cmd):
     """
     Class representing the hbnb CLI.
     """
-    prompt = "(hbnb) "
+    prompt = "(hbnb) " if stdin.isatty() else ""
+
     __storage = models.storage
 
     def precmd(self, line):
@@ -187,6 +189,16 @@ class HBNBCommand(Cmd):
         """ Ignore empty lines """
         pass
 
+    def preloop(self):
+        """ Checks isatty() """
+        if not stdin.isatty():
+            print('(hbnb) ')
+
+    def postcmd(self, stop, _):
+        """Prints if isatty is false"""
+        if not stdin.isatty():
+            print('(hbnb)', end='')
+        return stop
     # Help Documentation
 
     def help_quit(self):

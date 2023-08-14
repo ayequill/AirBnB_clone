@@ -38,7 +38,7 @@ class FileStorage:
         obj_to_file = {key: value.to_dict()
                        for key, value in FileStorage.__objects.items()}
 
-        with open(self.__file_path, "w") as file:
+        with open(FileStorage.__file_path, "w") as file:
             dump(obj_to_file, file)
 
     def reload(self):
@@ -54,11 +54,12 @@ class FileStorage:
         }
 
         try:
-            temp = {}
+            # temp = {}
             with open(FileStorage.__file_path, 'r') as f:
                 temp = load(f)
                 for key, val in temp.items():
                     cls_name = classes[val['__class__']]
-                    FileStorage.__objects[key] = cls_name(**val)
+                    # FileStorage.__objects[key] = cls_name(**val)
+                    self.new(cls_name(**val))
         except IOError:
             pass
