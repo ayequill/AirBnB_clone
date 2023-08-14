@@ -18,12 +18,10 @@ class BaseModel:
                     setattr(self, k, date.fromisoformat(v))
                     continue
                 setattr(self, k, v)
-            self.save()
         else:
             self.id = str(uuid4())
             self.created_at = date.now()
             self.updated_at = date.now()
-            self.save()
             models.storage.new(self)
 
     def save(self):
