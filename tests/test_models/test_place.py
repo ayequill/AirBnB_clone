@@ -50,3 +50,7 @@ class TestPlace(test_base_model.BaseModelTestCases):
 
     def test_amenity_ids(self):
         self.assertIsInstance(self.place.amenity_ids, list)
+    
+    def test_description(self):
+        """ Test description """
+        self.assertIsInstance(self.place.description, str)
