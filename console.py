@@ -188,7 +188,7 @@ class HBNBCommand(Cmd):
     def emptyline(self):
         """ Ignore empty lines """
         pass
-    
+
     def preloop(self):
         """ Checks isatty() """
         if not stdin.isatty():
