@@ -26,5 +26,4 @@ class TestState(TestCase):
     def test_state_name(self):
         """ Test State name """
         new_state = State()
-        new_state.name = 'Snake land'
         self.assertIsInstance(new_state.name, str)
