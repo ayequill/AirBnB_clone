@@ -1,5 +1,7 @@
 # HBNB Console Documentation
 
+<div align="center"><img src="console.png" width="600px"/></div>
+
 The **HBNB Console** is a command-line interface (CLI) for interacting with the "Holberton School New Base" (HBNB) database. It allows you to manage and manipulate instances of various classes, such as User, Place, State, City, Amenity, Review, and more.
 
 ## Table of Contents
