@@ -31,7 +31,7 @@
   gap: 30px;
 }
 .locations,
-.amenities {
+._amenities {
   height: inherit;
   width: 25%;
   display: flex;
@@ -44,11 +44,11 @@
   border-right: solid 1px #dddddd;
 }
 .locations h3,
-.amenities h3 {
+._amenities h3 {
   font-weight: 600;
 }
 .locations h4,
-.amenities h4 {
+._amenities h4 {
   font-weight: 400;
   font-size: 14px;
 }
@@ -71,7 +71,7 @@
   right: 0;
 }
 
-.amenities:hover .popover,
+._amenities:hover .popover,
 .locations:hover .popover {
   display: flex;
 }
