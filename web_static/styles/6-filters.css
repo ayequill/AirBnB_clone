@@ -37,6 +37,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 .locations {
   margin-left: 30px;
@@ -45,4 +46,35 @@
 .locations h3,
 .amenities h3 {
   font-weight: 600;
+}
+.locations h4,
+.amenities h4 {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.popover {
+  display: none;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  position: absolute;
+  width: calc(100%);
+  top: 100%;
+  right: 30px;
+  background-color: #fafafa;
+  padding: 2em;
+  flex-direction: column;
+  gap: 0.8em;
+}
+.dropdown__menu-state {
+  width: calc(100% + 30px);
+  right: 0;
+}
+
+.amenities:hover .popover,
+.locations:hover .popover {
+  display: flex;
+}
+.city {
+  margin-left: 0.7em;
 }
