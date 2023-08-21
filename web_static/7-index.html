@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="images/icon.png" />
+    <link rel="stylesheet" href="styles/3-footer.css" />
+    <link rel="stylesheet" href="styles/3-header.css" />
+    <link rel="stylesheet" href="styles/6-filters.css" />
+    <link rel="stylesheet" href="styles/4-common.css" />
+    <link rel="stylesheet" href="styles/7-places.css" />
+    <title>AirBnB</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo"></div>
+    </header>
+    <div class="container">
+      <section class="filters">
+        <div class="search__elements">
+          <div class="locations">
+            <h3>States</h3>
+            <h4>California</h4>
+            <ul
+              class="popover dropdown__menu-state"
+              role="list"
+              aria-label="dropdown menu"
+            >
+              <li>
+                <h2 class="state">California:</h2>
+                <ul>
+                  <li>
+                    <h4 class="city">San Diego</h4>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h2 class="state">California:</h2>
+                <ul>
+                  <li>
+                    <h4 class="city">San Diego</h4>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="amenities">
+            <h3>Amenities</h3>
+            <h4>Internet, Club</h4>
+            <ul class="popover" role="list" aria-label="dropdown menu">
+              <li>
+                <h2>Internet</h2>
+              </li>
+              <li><h2>Spa</h2></li>
+            </ul>
+          </div>
+        </div>
+        <button role="search" class="search__button" aria-label="Search">
+          Search
+        </button>
+      </section>
+      <section class="places">
+        <h1 class="places__title">Places</h1>
+        <div class="places__content">
+          <ul class="places__list">
+            <li class="place__name">
+              <article class="places__item">
+                <h2 class="place__name-text">My home</h2>
+              </article>
+            </li>
+            <li class="place__name">
+              <article class="places__item">
+                <h2 class="place__name-text">Tiny house</h2>
+              </article>
+            </li>
+            <li class="place__name">
+              <article class="places__item">
+                <h2 class="place__name-text">A suite</h2>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer class="footer">
+      <p class="footer__text">Best School</p>
+    </footer>
+  </body>
+</html>
