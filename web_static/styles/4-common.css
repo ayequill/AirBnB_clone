@@ -7,12 +7,22 @@
 }
 
 body {
-    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
-    color: #484848;
+  font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #484848;
+}
+h2 {
+  font-size: 16px;
 }
 
+h4 {
+  font-size: 14px;
+  font-weight: 400;
+}
+ul {
+  list-style: none;
+}
 .container {
-    max-width: 1000px;
-    margin: 30px auto;
+  max-width: 1000px;
+  margin: 30px auto;
 }
