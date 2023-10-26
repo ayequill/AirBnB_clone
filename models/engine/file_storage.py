@@ -21,7 +21,14 @@ class FileStorage:
         Return all objects
         Returns: a dictionary of all objects
         """
-        return FileStorage.__objects
+        if cls is None:
+            return FileStorage.__objects
+
+        instance_objs = {}
+        for key, value in FileStorage.__objects.items():
+            if value.__class__ == cls:
+                instance_objs[key] = FileStorage.__objects[key]
+        return instance_objs
 
     def new(self, obj):
         """
@@ -63,3 +70,10 @@ class FileStorage:
                     self.new(cls_name(**val))
         except IOError:
             pass
+
+    def delete(self, obj=None):
+            """Delete objects from the File Storage"""
+            if obj is not None:
+                key = obj.__class__.__name__ + "." + obj.id
+                if key in FileStorage.__objects:
+                    del FileStorage.__objects[key]
