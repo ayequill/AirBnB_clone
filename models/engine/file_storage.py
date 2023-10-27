@@ -16,7 +16,7 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
-    def all(self):
+    def all(self, cls: BaseModel=None):
         """
         Return all objects
         Returns: a dictionary of all objects
@@ -77,3 +77,11 @@ class FileStorage:
                 key = obj.__class__.__name__ + "." + obj.id
                 if key in FileStorage.__objects:
                     del FileStorage.__objects[key]
+                    
+    def get(self, cls: BaseModel, id: str) -> BaseModel:
+        """ Returns an object from file storage """
+        key = f"{cls.__name__}.{id}"
+        return self.all(cls).get(key)
+    
+    def count(self, cls: BaseModel=None) -> int:
+        return len(self.all(cls)) if cls else len(self.all())

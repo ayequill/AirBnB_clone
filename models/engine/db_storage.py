@@ -65,3 +65,12 @@ class DBStorage:
     def close(self):
         """Closes the session"""
         self.__session.close()
+    
+    def get(self, cls, id):
+        """ Gets an object from DB """
+        cls_name = f"{cls.__name__}.{id}"
+        return self.all(cls).get(cls_name)
+
+    def count(self, cls=None):
+        """ Counts the number of objects in storage """
+        return len(self.all(cls)) if cls else len(self.all())
