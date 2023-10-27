@@ -1,6 +1,6 @@
 #!/usr/env python
 """ Entry point """
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
 
@@ -13,7 +13,11 @@ def teardown(error):
     if error:
         print(error)
     storage.close()
-
+    
+@app.errorhandler(404)
+def error_page(error):
+    """ Custom error json """
+    return jsonify({"error": "Not found"}), 404
 
 if __name__ == "__main__":
     from os import getenv
